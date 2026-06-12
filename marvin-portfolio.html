@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marvin — GoHighLevel Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B2B4B;
+      --navy-dark: #111E35;
+      --navy-mid: #243354;
+      --gold: #F0B429;
+      --gold-light: #FDE68A;
+      --white: #FFFFFF;
+      --off-white: #F8F9FC;
+      --gray: #6B7280;
+      --light-gray: #E5E9F0;
+      --text: #1B2B4B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ===================== NAV ===================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(27, 43, 75, 0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy-dark) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--white) !important;
+      color: var(--navy-dark) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Navy shape — big arc on right side */
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -5%;
+      top: -10%;
+      width: 52%;
+      height: 120%;
+      background: var(--navy);
+      border-radius: 50% 0 0 50% / 30% 0 0 30%;
+      z-index: 0;
+    }
+
+    /* Dot grid top right */
+    .dot-grid {
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(6, 10px);
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .dot-grid.top-right { top: 8%; right: 7%; }
+    .dot-grid.bottom-left { bottom: 10%; left: 3%; }
+
+    .dot-grid span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      display: block;
+    }
+
+    /* Gold arc bottom */
+    .gold-arc {
+      position: absolute;
+      bottom: -2%;
+      right: 18%;
+      width: 160px;
+      height: 80px;
+      border-radius: 0 0 100px 100px;
+      background: var(--gold);
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 5;
+      padding-right: 2rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-greeting {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: var(--navy);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* Hero right — photo area */
+    .hero-right {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+
+    .hero-photo-circle {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid var(--gold);
+      background: var(--navy-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-placeholder {
+      color: rgba(255,255,255,0.3);
+      font-size: 5rem;
+      user-select: none;
+    }
+
+    .hero-stat {
+      position: absolute;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      z-index: 4;
+      text-align: center;
+      border-left: 3px solid var(--gold);
+    }
+
+    .hero-stat.left { left: -20px; bottom: 60px; }
+    .hero-stat.right { right: -20px; top: 60px; }
+
+    .hero-stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      color: var(--gray);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ===================== STATS BAR ===================== */
+    .stats-bar {
+      background: var(--navy);
+      padding: 2.5rem 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ===================== SECTIONS ===================== */
+    section { padding: 5rem 5%; }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-left: 3px solid var(--gold);
+      padding-left: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-sub {
+      font-size: 0.98rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ===================== ABOUT ===================== */
+    #about {
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-img-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: var(--gold);
+      border-radius: 12px;
+      z-index: -1;
+    }
+
+    .flow-steps {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+
+    .flow-arrow {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .flow-step span {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+    }
+
+    /* ===================== SERVICES ===================== */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      border: 2px solid var(--light-gray);
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+      transform-origin: left;
+    }
+
+    .service-card:hover {
+      border-color: var(--navy);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(27,43,75,0.1);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .service-list li {
+      font-size: 0.875rem;
+      color: var(--gray);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .service-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 0.15rem;
+    }
+
+    /* ===================== WHY ME ===================== */
+    #why { background: var(--navy); }
+
+    #why .section-eyebrow { color: var(--gold); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.6); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.2s;
+    }
+
+    .why-card:hover {
+      background: rgba(240,180,41,0.08);
+      border-color: var(--gold);
+    }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .why-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ===================== TOOLS ===================== */
+    #tools { background: var(--off-white); overflow: hidden; }
+
+    .tools-marquee-wrap {
+      overflow: hidden;
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    .tools-marquee-wrap::before,
+    .tools-marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .tools-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--off-white), transparent);
+    }
+
+    .tools-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--off-white), transparent);
+    }
+
+    .tools-track {
+      display: flex;
+      gap: 2rem;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tool-logo {
+      background: var(--white);
+      border: 1.5px solid var(--light-gray);
+      border-radius: 12px;
+      padding: 1rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 72px;
+      min-width: 130px;
+      transition: border-color 0.2s;
+    }
+
+    .tool-logo:hover { border-color: var(--gold); }
+
+    .tool-logo img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(0.2);
+    }
+
+    .tool-logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--navy);
+      letter-spacing: 0.03em;
+    }
+
+    /* ===================== TESTIMONIALS ===================== */
+    #testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testi-card {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .testi-quote {
+      font-size: 3rem;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      line-height: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .testi-text {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testi-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      background: var(--navy-mid);
+      flex-shrink: 0;
+    }
+
+    .testi-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testi-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .testi-role {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ===================== CTA ===================== */
+    #cta {
+      background: var(--navy);
+      text-align: center;
+      padding: 5rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(240,180,41,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #cta .section-eyebrow { color: var(--gold); border-color: var(--gold); }
+    #cta .section-title { color: var(--white); margin-bottom: 1rem; }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-gold:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-outline-white:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 1.8rem 5%;
+      font-size: 0.82rem;
+    }
+
+    footer strong { color: var(--gold); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 6rem; }
+      .hero::after { display: none; }
+      .hero-right { margin-top: 2rem; }
+      #about { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-bar { gap: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tools-track { animation: none; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Marv<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Me</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#testimonials">Results</a></li>
+      <li><a class="nav-cta" href="https://calendly.com/vhin-yap29/30min" target="_blank">Schedule a Call</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <!-- Dot grids -->
+    <div class="dot-grid top-right">
+      <script>
+        for(let i=0;i<30;i++) document.currentScript.parentElement.insertAdjacentHTML('beforeend','<span></span>');
+      </script>
+    </div>
+    <div class="dot-grid bottom-left">
+      <script>
+        for(let i=0;i<30;i++) document.currentScript.parentElement.insertAdjacentHTML('beforeend','<span></span>');
+      </script>
+    </div>
+    <div class="gold-arc"></div>
+
+    <div class="hero-left">
+      <span class="hero-eyebrow">GoHighLevel Specialist</span>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Marvin</h1>
+      <span class="hero-script">Your GHL Growth Partner</span>
+      <span class="hero-badge">5 Years of Hands-On Experience</span>
+      <p class="hero-desc">
+        I help service providers, local businesses, and SaaS startups build high-converting funnels, end-to-end automation, and CRM systems — so your business works while you focus on growth.
+      </p>
+      <div class="flow-steps">
+        <div class="flow-step"><span>Lead Capture</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span>Nurture</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span>Conversion</span></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><span>Retention</span></div>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-primary" href="https://calendly.com/vhin-yap29/30min" target="_blank">📅 Schedule a Call</a>
+        <a class="btn-outline" href="#services">See What I Do →</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-circle">
+          <!-- Replace src with your actual photo -->
+          <span class="hero-photo-placeholder">👤</span>
+        </div>
+        <div class="hero-stat left">
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Years in GHL</div>
+        </div>
+        <div class="hero-stat right">
+          <div class="hero-stat-num">40%</div>
+          <div class="hero-stat-label">Avg. Lead Increase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10hrs</div>
+      <div class="stat-label">Avg. Time Saved/Week</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Business-Minded Builds</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-img-wrap">
+      <div class="about-img-box">
+        <!-- Replace with your actual infographic/portfolio image -->
+        <img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/69104d29110a6_gemini-2.5-flash-image_A_clean_and_modern_flat-style_infographic_showing_multiple_digital_marketing_and-02.jpg" alt="GHL Automation Infographic" />
+      </div>
+      <div class="about-img-accent"></div>
+    </div>
+    <div>
+      <span class="section-eyebrow">About Me</span>
+      <h2 class="section-title">Turn Your Business Into a<br/>Revenue Machine</h2>
+      <p class="section-sub">
+        I've spent the last 5 years specializing in GoHighLevel — building CRM systems, funnels, and follow-up automation that run on autopilot. My goal is simple: help you grow your business, save time, and run smoother operations using smart automation, proven funnels, and AI tools that actually work.
+      </p>
+      <p style="font-size:0.95rem;color:var(--gray);line-height:1.75;margin-bottom:2rem;">
+        Whether you're a service provider, local business, or SaaS startup — I integrate landing pages, CRM pipelines, calendar bookings, email/SMS flows, and analytics into one streamlined platform so you never have to juggle multiple tools again.
+      </p>
+      <a class="btn-primary" href="https://calendly.com/vhin-yap29/30min" target="_blank">Get Your Free Audit →</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <span class="section-eyebrow">What I Do</span>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">End-to-end systems that attract leads, convert customers, and keep them coming back — all inside one platform.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon-wrap">⚙️</div>
+        <p class="service-title">Automation & AI Integration</p>
+        <ul class="service-list">
+          <li><strong>GHL Setup & Optimization</strong> — Full CRM config, pipeline creation, and workflow automation</li>
+          <li><strong>Zapier & API Workflows</strong> — Connect apps to eliminate repetitive tasks</li>
+          <li><strong>AI-Powered Communication</strong> — Chatbots, automated follow-ups, and lead qualification</li>
+          <li><strong>Staff Onboarding Automation</strong> — Hiring forms, applicant tracking, interview scheduling</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🚀</div>
+        <p class="service-title">Funnel Strategy & Build</p>
+        <ul class="service-list">
+          <li><strong>Sales Page Creation</strong> — High-converting landing pages optimized for your audience</li>
+          <li><strong>Lead Magnet Funnels</strong> — Build email lists through free resources, webinars, or trials</li>
+          <li><strong>Checkout & Upsell Flows</strong> — Maximize revenue with optimized purchase journeys</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">📈</div>
+        <p class="service-title">Client Acquisition Systems</p>
+        <ul class="service-list">
+          <li><strong>Cold Email Outreach</strong> — Personalized campaigns that start genuine conversations</li>
+          <li><strong>Website & GMB Optimization</strong> — Get found on Google by your ideal clients</li>
+          <li><strong>Lead Tracking & Reporting</strong> — Real-time dashboards showing your ROI</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ME -->
+  <section id="why">
+    <span class="section-eyebrow">Why Work With Me</span>
+    <h2 class="section-title">What Sets Me Apart</h2>
+    <p class="section-sub">I don't just build systems — I build them with the bigger picture in mind. Every decision ties back to your business goals.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧠</div>
+        <p class="why-title">Proven Skill in Automation & AI</p>
+        <p class="why-desc">I don't just "know" tools — I know how to combine them to create smooth, end-to-end systems. From CRM workflows to AI-powered chatbots, I make technology work for the business instead of the other way around.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <p class="why-title">Focus on Measurable Results</p>
+        <p class="why-desc">Every project starts with a goal. Whether it's increasing enrollment, reducing manual work, or generating leads — I track and report on the numbers that matter so you can see the actual impact.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <p class="why-title">Adaptable & Quick to Learn</p>
+        <p class="why-desc">Businesses and technologies change fast — I adapt even faster. I'm comfortable learning new tools, strategies, or processes if it means delivering better outcomes for you.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💼</div>
+        <p class="why-title">Business-Minded Perspective</p>
+        <p class="why-desc">I understand that every automation, funnel, or campaign needs to contribute to growth, efficiency, and client satisfaction. I build with the bigger picture in mind, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <span class="section-eyebrow">My Toolkit</span>
+    <h2 class="section-title">Tools & Platforms</h2>
+    <p class="section-sub">I combine proven strategy with the best tools in automation, CRM, and AI to create systems that deliver measurable results.</p>
+    <div class="tools-marquee-wrap">
+      <div class="tools-track">
+        <!-- Row 1 (original) -->
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdc510a6cc_ghl.png" alt="GoHighLevel" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bf18578773_chat-gpt-logo-png-removebg-preview.png" alt="ChatGPT" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdea41664f_zap-removebg-preview.png" alt="Zapier" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/698026d924b25_n8n-seeklogo.png" alt="n8n" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bf060c5082_jotform-logo-transparent-800x400-removebg-preview.png" alt="Jotform" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689be063074e0_OIP__4_-removebg-preview.png" alt="Tool" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdf945af2c_OIP__3_-removebg-preview.png" alt="Tool" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdf224d614_OIP__2_-removebg-preview.png" alt="Tool" /></div>
+        <!-- Row 2 (duplicate for seamless loop) -->
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdc510a6cc_ghl.png" alt="GoHighLevel" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bf18578773_chat-gpt-logo-png-removebg-preview.png" alt="ChatGPT" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdea41664f_zap-removebg-preview.png" alt="Zapier" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/698026d924b25_n8n-seeklogo.png" alt="n8n" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bf060c5082_jotform-logo-transparent-800x400-removebg-preview.png" alt="Jotform" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689be063074e0_OIP__4_-removebg-preview.png" alt="Tool" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdf945af2c_OIP__3_-removebg-preview.png" alt="Tool" /></div>
+        <div class="tool-logo"><img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/689bdf224d614_OIP__2_-removebg-preview.png" alt="Tool" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <span class="section-eyebrow">Results & Testimonials</span>
+    <h2 class="section-title">Real Stories,<br/>Real Results</h2>
+    <p class="section-sub">Real stories from businesses that have experienced streamlined systems, improved efficiency, and measurable growth.</p>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Working with Marvin completely changed the way we run our childcare center. The automation system he set up saves us at least 10 hours a week, and we've seen a 40% increase in parent inquiries. It's like having another staff member without the extra payroll.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/692474807cb4c_753cec85-8a20-4bd0-bf0e-798b38acf26c.jpg" alt="Robert H." />
+          </div>
+          <div>
+            <p class="testi-name">Robert H.</p>
+            <p class="testi-role">CEO</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Working with Marvin transformed the way we handle client management and follow-ups. The automation system he set up cut our manual tasks in half, and our response time to clients improved drastically.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://d1yei2z3i6k35z.cloudfront.net/14003469/692472c388fee_tmpj29815vv.webp" alt="Diana A." />
+          </div>
+          <div>
+            <p class="testi-name">Diana A.</p>
+            <p class="testi-role">CEO</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Working with Marvin completely streamlined our operations. Enrollment, parent communication, and scheduling are now automated, saving us time and helping us grow faster.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://d1yei2z3i6k35z.cloudfront.net/161/6358f47548fca_Ellipse1.png" alt="Justine M." />
+          </div>
+          <div>
+            <p class="testi-name">Justine M.</p>
+            <p class="testi-role">CEO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <span class="section-eyebrow">Ready to Scale?</span>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto;max-width:600px;text-align:center;">Let's Build Your<br/>Revenue Machine</h2>
+    <p class="cta-sub">Whether you need a full GHL setup, a high-converting funnel, or just want to explore what's possible — book a free audit call and let's map it out together.</p>
+    <div class="cta-btns">
+      <a class="btn-gold" href="https://calendly.com/vhin-yap29/30min" target="_blank">📅 Schedule a Free Call</a>
+      <a class="btn-outline-white" href="#services">See Real Automations →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <strong>Marvin</strong> — GoHighLevel Specialist. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
